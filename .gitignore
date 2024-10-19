@@ -1,0 +1,4 @@
+# ignore all tex stuff except the tex and pdf
+sheet_1_tex/*
+!*.tex
+!*.pdf
