@@ -27,8 +27,8 @@
 \usetikzlibrary{arrows.meta,bending}
 
 \newcommand{\ASSNR}{1}
-\newcommand{\AuthorONE}{Kamil}
-\newcommand{\MatNoONE}{000000}
+\newcommand{\AuthorONE}{Kamil Bannasch}
+\newcommand{\MatNoONE}{405231}
 \newcommand{\AuthorTWO}{Fynn Castor}
 \newcommand{\MatNoTWO}{540055}
 
@@ -152,4 +152,34 @@ On the other hand a too small value does not exploit early enough. In the end ou
 \caption{Regret, reward, and percentage of best arm chosen for 
     4-armed bandit with normal arm distribution, where $(\mu,\sigma)\in\{(1,0.2),(1.2,0.4)(1.1,0.6),(1.4,0.8)\}$, averaged for 1000 trials}
 \end{figure}
+\section{Excercise 2a}
+Ein k-armiger nicht stationärer Bandit ist ein Problem zur Entscheidungsfindung beim Machine
+Learning. Dabei gibt es k einarmige Banditen, welche jeweils eine eigene
+Wahrscheinlichkeitsverteilung für ihren Reward geben.
+Im Gegensatz zu dem stationärem Bandit bleibt jedoch die Wahrscheinlichkeitsverteilung für den
+Reward nicht immer gleich, sondern ändert sich im Laufe der Zeit. Bei der Modellierung eines
+solchen Problems ist also darauf zu achten, dass die Verteilungen der Rewards sich im Laufe der
+Zeit irgendwie ändern müssen. Das kann durch viele verschiedene Möglichkeiten dargestellt
+werden, die deterministisch oder stochastisch sind. Ein Beispiel ist, dass für eine Normalverteilung
+an zufällig ausgewählten Zeitpunkten der Erwartungswert geändert wird. Um einen Algorithmus
+also von einem stationären auf einen nicht stationären anzupassen muss die Veränderung der
+Wahrscheinlichkeiten mit berücksichtigt werden. Dafür wird im Normalfall der Algorithmus so
+ummodelliert, dass neue Erkentnisse eine höhere Gewichtung haben, da es wahrscheinlicher ist,
+dass diese die aktuellen Verteilungen besser erfassen als weiter zurück liegende Erkentnisse. Ein
+Beispiel dafür ist bei dem Upper Confidence Bound ein Fenster zu nutzen, welches nur die letzten n
+Läufe berücksichtigt. Dadurch würden weiter als n zurückliegende Ergebnisse nicht den Reward
+"verfälschen". Ähnlich wie bei einem stationären Banditen sind auch bei einem nicht stationären
+Banditen sowohl Ausbeutung, als auch Erkundung relevant um einerseits auf optimalen bisher
+bekannten Rewards zu bleiben und andererseits mögliche bessere Rewards zu finden. Ausbeutung
+kann jedoch im Vergleich zu dem stationären Banditen deutlich schlechtere Ergebnisse liefern, da
+sich die Verteilung der Rewards ändern können und diese so länger auf schlechten Rewards bleiben
+können. Hier ist besonders wichtig dann einen Algorithmus zu finden, welcher erkennt, wann
+Erkundung eingesetzt werden sollte um die möglichst optimalen Banditen zu finden und um
+möglicherweise deutlich schlechter gewordene Banditen zu verlassen. Auch hier kann wieder ein
+Ansatz genutzt werden, dass länger zurückliegende Erkentnisse irrelevanter werden. Bei der
+Auswertung eines solchen Algorithmus können dann wie beim stationären Banditen auch Regret
+und der Cummulative Reward als Kriterien genutzt werden. Allerdings kommen bei nicht
+stationären Banditen noch zusätzliche Kriterien hinzu. Einerseits die Stabilität gegenüber
+Veränderungen in den Wahrscheinlichkeitsverteilungen, die möglichst hoch sein sollte und
+andererseits die Reaktionsgeschwindigkeit auf Veränderungen, die möglichst schnell sein sollte
 \end{document}
